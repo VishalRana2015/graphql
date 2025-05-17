@@ -8,6 +8,28 @@ const typeDefs = gql`
     track(id: ID!): Track!
     "Fetch a specific module, provided a module's ID"
     module(id: ID!): Module!
+    "Fetch all pets"
+    pets : [Pet!]!
+    "Fetch all books"
+    books: [Book!]!
+    "Fetch a book from its ID"
+    book(index: Int) : Book
+  }
+
+  type Book{
+    id : ID!
+    name: String!
+    authors : [Author!]!
+  }
+  
+  type Author{
+    id: ID!
+    name: String!
+  }
+  
+  type Pet {
+    id: ID!
+    weightInKilograms: Float!
   }
 
   type Mutation {
