@@ -1,4 +1,4 @@
-const gql = require('graphql-tag');
+import gql from 'graphql-tag';
 
 const typeDefs = gql`
   type Query {
@@ -8,6 +8,19 @@ const typeDefs = gql`
     track(id: ID!): Track!
     "Fetch a specific module, provided a module's ID"
     module(id: ID!): Module!
+  }
+
+  type Mutation {
+    "Increment the track's number of views by one."
+    incrementTrackViews(id: ID!) : IncrementTrackViewsResponse
+  }
+
+  type IncrementTrackViewsResponse {
+    code: Int!
+    success: Boolean!
+    message : String!
+    "Newly upated track after a successful mutation. Note it has been kept nullable as the operation might fail, for example the track with the given ID doesn't exist"
+    track: Track 
   }
 
   "A track is a group of Modules that teaches about a specific topic"
@@ -54,4 +67,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+export { typeDefs};

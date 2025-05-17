@@ -18,5 +18,6 @@
   },
   "author": "Raphael Terrier @R4ph-t",
   "license": "MIT",
+  "type" : "module",
   "private": true
 }
